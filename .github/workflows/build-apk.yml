@@ -30,10 +30,32 @@ jobs:
           mkdir source
           unzip -q GR_Burger_POS_Proyecto_v2.zip -d source
 
+      
+      - name: Corregir Java y Kotlin
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("source/app/build.gradle.kts")
+          s = p.read_text()
+          marker = "    buildFeatures { compose = true }"
+          replacement = """    compileOptions {
+                  sourceCompatibility = JavaVersion.VERSION_17
+                  targetCompatibility = JavaVersion.VERSION_17
+              }
+              kotlinOptions {
+                  jvmTarget = "17"
+              }
+              buildFeatures { compose = true }"""
+          if marker not in s:
+              raise SystemExit("No se encontró la configuración esperada")
+          p.write_text(s.replace(marker, replacement, 1))
+          PY
+
       - name: Compilar APK
         run: |
           cd source
           gradle --no-daemon :app:assembleDebug
+
 
       - name: Guardar APK
         uses: actions/upload-artifact@v4
