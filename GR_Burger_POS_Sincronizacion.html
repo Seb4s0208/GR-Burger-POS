@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171717"><title>GR Burger POS</title>
+<style>
+:root{--bg:#f4f0e9;--ink:#1b1b1b;--red:#bb262a;--dark:#191919;--line:#e4ddd3;--muted:#6d6964;--white:#fff;--green:#196b4a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.shell{max-width:1100px;margin:auto;padding:0 16px 90px}.header{background:var(--dark);color:white;position:sticky;top:0;z-index:3;box-shadow:0 2px 8px #0002}.header-inner{max-width:1100px;margin:auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}.logo{font-size:22px;font-weight:950;letter-spacing:-.9px}.logo span{color:#f14949}.subtitle{font-size:11px;color:#ccc}.nav{display:flex;gap:6px;overflow:auto;max-width:1100px;margin:auto;padding:0 12px 10px}.nav button{background:#303030;color:#eee;border:0;padding:9px 13px;border-radius:10px;white-space:nowrap;font-weight:650}.nav button.active{background:var(--red);color:#fff}h1{font-size:24px;margin:20px 0 4px}h2{font-size:17px;margin:0 0 12px}p{line-height:1.4}.muted{color:var(--muted)}.small{font-size:12px}.section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:0 2px 8px #00000008}.metric{font-size:26px;font-weight:850;margin-top:5px}.red{color:var(--red)}.green{color:var(--green)}.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:16px 0}.btn{border:0;background:var(--dark);color:white;border-radius:10px;padding:11px 14px;font-weight:700;min-height:42px}.btn.red{background:var(--red);color:white}.btn.light{background:#f0ece5;color:var(--ink);border:1px solid var(--line)}.btn.green{background:var(--green);color:white}.btn.sm{padding:7px 10px;min-height:34px;font-size:13px}.field{display:flex;flex-direction:column;gap:5px;margin:10px 0}.field label{font-weight:650;font-size:13px}.field input,.field select,.field textarea,.search{border:1px solid #cfc7bb;background:white;border-radius:9px;padding:11px;width:100%;min-height:42px}.field textarea{min-height:70px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.product-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:9px}.product{display:flex;flex-direction:column;gap:8px;justify-content:space-between;background:white;border:1px solid var(--line);border-radius:12px;padding:13px}.product strong{font-size:15px}.price{font-size:17px;font-weight:850}.pill{display:inline-flex;background:#f4e4e2;color:#912128;border-radius:30px;padding:4px 9px;font-size:11px;font-weight:750}.sale-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,1fr);gap:16px}.cart{position:sticky;top:115px;align-self:start}.cart-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.qty{display:flex;gap:6px;align-items:center}.qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:#f6f3ee;font-weight:900}.total{display:flex;justify-content:space-between;align-items:center;font-size:21px;font-weight:850;padding:16px 0}.table-wrap{overflow-x:auto}.table{border-collapse:collapse;width:100%;min-width:500px}.table th,.table td{border-bottom:1px solid var(--line);padding:11px 8px;text-align:left;font-size:13px}.table th{color:var(--muted)}.empty{padding:25px;text-align:center;color:var(--muted)}.modal{position:fixed;inset:0;background:#0009;display:none;z-index:9;align-items:center;justify-content:center;padding:12px}.modal.open{display:flex}.modal-box{background:white;border-radius:17px;width:min(480px,100%);max-height:90vh;overflow:auto;padding:20px}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#222;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:20;max-width:90vw;text-align:center}.notice{border-left:3px solid var(--red);background:#fff6f3;padding:12px;border-radius:6px;margin:12px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.stack{display:flex;flex-wrap:wrap;gap:8px}.stock-input{width:80px!important}.footer{text-align:center;font-size:11px;color:var(--muted);margin:25px 0}.receipt{font:12px monospace;white-space:pre-wrap;background:#fff;border:1px dashed #888;padding:15px;max-width:300px;margin:12px auto;overflow-wrap:anywhere}.hide{display:none!important}@media(max-width:750px){.sale-layout{grid-template-columns:1fr}.cart{position:static}.two{grid-template-columns:1fr}.product-list{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{font-size:22px}.shell{padding:0 12px 80px}.card{padding:13px}.product{padding:10px}.nav button{font-size:13px;padding:9px 11px}}
+</style></head>
+<body>
+<header class="header"><div class="header-inner"><div><div class="logo">GR <span>BURGER</span> <span style="font-size:11px;color:#ccc">POS</span></div><div class="subtitle">Sistema de ventas · Gs. · Sin mensualidad</div></div><div class="small" id="clock"></div></div><nav class="nav" id="nav"><button data-tab="inicio" class="active">Inicio</button><button data-tab="ventas">Nueva venta</button><button data-tab="historial">Historial</button><button data-tab="productos">Productos / Stock</button><button data-tab="caja">Caja</button><button data-tab="ajustes">Ajustes</button></nav></header>
+<main class="shell">
+<section id="inicio" class="section active"><h1>Resumen del negocio</h1><p class="muted">Movimientos registrados en este dispositivo.</p><div class="grid" id="dashboard"></div><div class="toolbar"><h2>Últimas ventas</h2><button class="btn red" onclick="go('ventas')">+ Nueva venta</button></div><div class="card" id="recent"></div></section>
+<section id="ventas" class="section"><h1>Nueva venta</h1><p class="muted">Elegí los productos y cobrá el pedido.</p><div class="sale-layout"><div><input class="search" id="searchProduct" placeholder="Buscar hamburguesa, papas..." oninput="renderProductsForSale()"><div class="toolbar"><h2>Menú</h2><span class="small muted">Tocá para agregar</span></div><div class="product-list" id="saleProducts"></div></div><div class="card cart"><h2>Pedido actual</h2><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">Gs. 0</span></div><div class="field"><label>Nombre del cliente (opcional)</label><input id="customer" placeholder="Cliente / Mesa"></div><div class="field"><label>Forma de pago</label><select id="payment"><option>Efectivo</option><option>Transferencia</option><option>Tarjeta</option><option>Otro</option></select></div><div class="field"><label>Tipo de pedido</label><select id="orderType"><option>Mostrador</option><option>Retiro</option><option>Delivery</option></select></div><div class="field"><label>Observaciones</label><textarea id="orderNotes" placeholder="Sin cebolla, extra cheddar..."></textarea></div><div class="stack"><button class="btn green" onclick="completeSale()" id="completeBtn">Cobrar y guardar</button><button class="btn light" onclick="clearCart()">Vaciar</button></div></div></div></section>
+<section id="historial" class="section"><h1>Historial de ventas</h1><div class="toolbar"><div class="field" style="margin:0"><label>Filtrar por fecha</label><input type="date" id="historyDate" onchange="renderHistory()"></div><button class="btn light" onclick="document.getElementById('historyDate').value='';renderHistory()">Todas</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Pedido</th><th>Fecha</th><th>Cliente</th><th>Pago</th><th>Total</th><th>Ticket</th></tr></thead><tbody id="historyBody"></tbody></table></div></div></section>
+<section id="productos" class="section"><h1>Productos y stock</h1><p class="muted">El stock se descuenta por producto vendido. No calcula ingredientes individuales.</p><div class="toolbar"><button class="btn red" onclick="editProduct()">+ Agregar producto</button><span class="small muted">Dejá stock vacío para venta sin límite</span></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Producto</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr></thead><tbody id="productsBody"></tbody></table></div></div></section>
+<section id="caja" class="section"><h1>Control de caja</h1><p class="muted">Ingresos y egresos del día. Los pagos que no son en efectivo se muestran por separado.</p><div class="grid" id="cashSummary"></div><div class="toolbar"><h2>Movimientos manuales</h2><button class="btn red" onclick="openCashModal()">+ Movimiento</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Fecha</th><th>Concepto</th><th>Tipo</th><th>Monto</th></tr></thead><tbody id="cashBody"></tbody></table></div></div></section>
+<section id="ajustes" class="section"><h1>Ajustes y respaldo</h1><div class="grid"><div class="card"><h2>Datos del ticket</h2><div class="field"><label>Nombre del negocio</label><input id="businessName" value="GR Burger"></div><div class="field"><label>Pie del ticket</label><input id="receiptFooter" value="¡Gracias por tu compra!"></div><button class="btn" onclick="saveSettings()">Guardar datos</button></div><div class="card"><h2>Sincronización en la nube</h2>
+<p class="muted small">Conectá la misma cuenta en tu tablet y celular para compartir ventas, productos, stock y caja. Requiere configurar Firebase una sola vez.</p>
+<div class="field"><label>Configuración Firebase (JSON)</label><textarea id="firebaseConfig" placeholder='Pegá aquí el objeto de configuración que entrega Firebase'></textarea></div>
+<div class="field"><label>Correo de la cuenta compartida</label><input id="cloudEmail" type="email" autocomplete="username" placeholder="tu correo"></div>
+<div class="field"><label>Contraseña</label><input id="cloudPassword" type="password" autocomplete="current-password" placeholder="Contraseña de Firebase"></div>
+<div class="stack"><button class="btn red" id="cloudCreate" type="button">Crear cuenta</button><button class="btn" id="cloudLogin" type="button">Conectar / Iniciar sesión</button><button class="btn light" id="cloudLogout" type="button">Desconectar</button></div>
+<p id="cloudStatus" class="small muted">Estado: todavía no conectado.</p>
+<p class="small muted">Usá el mismo correo y contraseña en los dos dispositivos. No compartas estos datos con otras personas.</p>
+</div><div class="card"><h2>Respaldo de información</h2><p class="muted small">Los datos se guardan localmente en este navegador. Exportá copias frecuentemente: si borrás datos del navegador o cambiás de celular, podés perderlos.</p><div class="stack"><button class="btn" onclick="exportData()">Descargar respaldo JSON</button><button class="btn light" onclick="document.getElementById('importFile').click()">Restaurar respaldo</button><input type="file" accept="application/json,.json" id="importFile" class="hide" onchange="importData(event)"></div></div><div class="card"><h2>Impresora 58 mm</h2><p class="muted small">Cada venta permite descargar su ticket como PDF. También podés imprimir en 58 mm si Android tiene configurado un servicio compatible. La conexión Bluetooth directa no está incluida en esta versión web.</p><button class="btn light" onclick="demoTicket()">Probar ticket</button></div><div class="card"><h2>Importante</h2><p class="small muted">Esta es una primera versión local y gratuita, sin servidor ni sincronización entre dispositivos. Los tickets son comprobantes internos de venta; no sustituyen una factura legal de Paraguay.</p></div></div></section>
+<div class="footer">GR Burger POS · Versión inicial local · Los datos quedan en este navegador</div>
+</main>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalContent"></div></div><div class="toast" id="toast"></div>
+<script>
+'use strict';
+const KEY='grburger_pos_v1';
+const seed=[['GR JUNIOR',15000,'Hamburguesas'],['V-0',18000,'Hamburguesas'],['V-1',24000,'Hamburguesas'],['V-2',24000,'Hamburguesas'],['V-3',24000,'Hamburguesas'],['V-4',28000,'Hamburguesas'],['ONION',24000,'Hamburguesas'],['BIG GR',30000,'Hamburguesas'],['SÁNDWICH LOMITO',24000,'Sándwiches'],['PAPAS CLÁSICAS',10000,'Papas y extras'],['PAPAS CON CHEDDAR',20000,'Papas y extras'],['PAPAS CON KATUPIRY Y VERDEO',20000,'Papas y extras'],['BASTONCITOS DE POLLO',20000,'Papas y extras']];
+const init=()=>({products:seed.map((p,i)=>({id:i+1,name:p[0],price:p[1],category:p[2],stock:null})),sales:[],cash:[],nextSale:1,settings:{name:'GR Burger',footer:'¡Gracias por tu compra!'}});
+let db;try{db=JSON.parse(localStorage.getItem(KEY))||init()}catch(e){db=init()};if(!Array.isArray(db.products)||!Array.isArray(db.sales)||!Array.isArray(db.cash))db=init();db.settings=db.settings||{name:'GR Burger',footer:'¡Gracias por tu compra!'};db.nextSale=db.nextSale||1;
+Object.defineProperty(window,'db',{get:()=>db,set:v=>{db=v}});
+window.render=()=>render();
+let cart={},lastSale=null;
+const money=n=>'Gs. '+Math.round(Number(n)||0).toLocaleString('es-PY');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const day=d=>{let t=new Date(d);return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`};
+const when=d=>new Date(d).toLocaleString('es-PY',{dateStyle:'short',timeStyle:'short'});
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db));if(window.grCloudSave)window.grCloudSave(db)}catch(e){alert('No se pudieron guardar los datos. Revisá el espacio o permisos del navegador.')}}
+function toast(t){let el=document.getElementById('toast');el.textContent=t;el.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>el.style.display='none',3000)}
+function go(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));render();window.scrollTo(0,0)}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.tab)));
+function render(){renderDashboard();renderProductsForSale();renderCart();renderHistory();renderInventory();renderCash();document.getElementById('businessName').value=db.settings.name;document.getElementById('receiptFooter').value=db.settings.footer;document.getElementById('clock').textContent=new Date().toLocaleDateString('es-PY')}
+function renderDashboard(){const today=day(new Date()),sales=db.sales.filter(s=>day(s.date)===today),sum=sales.reduce((a,s)=>a+s.total,0),cash=sales.filter(s=>s.payment==='Efectivo').reduce((a,s)=>a+s.total,0),low=db.products.filter(p=>p.stock!==null&&p.stock<=3).length;document.getElementById('dashboard').innerHTML=`<div class="card"><div class="muted">Ventas de hoy</div><div class="metric">${money(sum)}</div></div><div class="card"><div class="muted">Pedidos de hoy</div><div class="metric">${sales.length}</div></div><div class="card"><div class="muted">Cobrado en efectivo</div><div class="metric">${money(cash)}</div></div><div class="card"><div class="muted">Productos con stock bajo</div><div class="metric ${low?'red':''}">${low}</div></div>`;document.getElementById('recent').innerHTML=db.sales.length?db.sales.slice(-5).reverse().map(s=>`<div class="row" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>#${s.id}</b> · ${esc(s.customer||s.type)}<div class="muted small">${when(s.date)}</div></div><div><b>${money(s.total)}</b><div><button class="btn sm light" onclick="showReceipt(${s.id})">Ticket</button></div></div></div>`).join(''):'<div class="empty">Todavía no hay ventas registradas.</div>'}
+function renderProductsForSale(){let q=document.getElementById('searchProduct').value.trim().toLowerCase();let list=db.products.filter(p=>p.name.toLowerCase().includes(q));document.getElementById('saleProducts').innerHTML=list.map(p=>`<div class="product"><div><span class="pill">${esc(p.category)}</span><div style="margin:9px 0 3px"><strong>${esc(p.name)}</strong></div><div class="price">${money(p.price)}</div><div class="small muted">${p.stock===null?'Stock sin límite':'Disponibles: '+p.stock}</div></div><button class="btn red sm" ${p.stock!==null&&p.stock<=(cart[p.id]||0)?'disabled':''} onclick="addToCart(${p.id})">+ Agregar</button></div>`).join('')||'<p class="muted">No hay productos.</p>'}
+function addToCart(id){let p=db.products.find(p=>p.id===id);if(!p)return;if(p.stock!==null&&(cart[id]||0)>=p.stock)return toast('No hay suficiente stock');cart[id]=(cart[id]||0)+1;renderCart();renderProductsForSale()}
+function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];renderCart();renderProductsForSale()}
+function clearCart(){cart={};renderCart();renderProductsForSale()}
+function cartLines(){return Object.entries(cart).map(([id,qty])=>{let p=db.products.find(x=>x.id===Number(id));return p?{id:p.id,name:p.name,price:p.price,qty,total:p.price*qty}:null}).filter(Boolean)}
+function renderCart(){let items=cartLines();document.getElementById('cartItems').innerHTML=items.map(i=>`<div class="cart-row"><div><b>${esc(i.name)}</b><div class="muted small">${money(i.price)} c/u</div></div><div><div class="qty"><button onclick="changeQty(${i.id},-1)">−</button><b>${i.qty}</b><button onclick="addToCart(${i.id})">+</button></div><div class="small" style="text-align:right;margin-top:5px">${money(i.total)}</div></div></div>`).join('')||'<div class="empty">Agregá productos al pedido.</div>';document.getElementById('cartTotal').textContent=money(items.reduce((a,i)=>a+i.total,0));document.getElementById('completeBtn').disabled=!items.length}
+function completeSale(){let lines=cartLines();if(!lines.length)return;for(let i of lines){let p=db.products.find(p=>p.id===i.id);if(p.stock!==null&&p.stock<i.qty)return alert('Stock insuficiente para '+p.name)}const sale={id:db.nextSale++,date:new Date().toISOString(),customer:document.getElementById('customer').value.trim(),payment:document.getElementById('payment').value,type:document.getElementById('orderType').value,notes:document.getElementById('orderNotes').value.trim(),items:lines,total:lines.reduce((a,i)=>a+i.total,0)};lines.forEach(i=>{let p=db.products.find(p=>p.id===i.id);if(p.stock!==null)p.stock-=i.qty});db.sales.push(sale);save();lastSale=sale;clearCart();document.getElementById('customer').value='';document.getElementById('orderNotes').value='';render();showReceipt(sale.id);toast('Venta #'+sale.id+' guardada')}
+function renderHistory(){let filter=document.getElementById('historyDate').value;let list=db.sales.filter(s=>!filter||day(s.date)===filter).slice().reverse();document.getElementById('historyBody').innerHTML=list.map(s=>`<tr><td><b>#${s.id}</b></td><td>${when(s.date)}</td><td>${esc(s.customer||s.type)}</td><td>${esc(s.payment)}</td><td><b>${money(s.total)}</b></td><td><button class="btn sm light" onclick="showReceipt(${s.id})">Ver</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">Sin ventas en este período</td></tr>'}
+function renderInventory(){document.getElementById('productsBody').innerHTML=db.products.map(p=>`<tr><td><b>${esc(p.name)}</b><div class="muted small">${esc(p.category)}</div></td><td>${money(p.price)}</td><td>${p.stock===null?'∞':p.stock}</td><td><button class="btn sm light" onclick="editProduct(${p.id})">Editar</button></td></tr>`).join('')||'<tr><td colspan="4">Sin productos</td></tr>'}
+function editProduct(id){let p=db.products.find(p=>p.id===id)||{id:null,name:'',price:0,category:'Hamburguesas',stock:null};openModal(`<h2>${p.id?'Editar':'Nuevo'} producto</h2><form id="productForm"><div class="field"><label>Nombre</label><input id="pName" required maxlength="80" value="${esc(p.name)}"></div><div class="two"><div class="field"><label>Precio en Gs.</label><input id="pPrice" required type="number" min="0" step="1" value="${p.price}"></div><div class="field"><label>Stock (vacío = ilimitado)</label><input id="pStock" type="number" min="0" step="1" value="${p.stock===null?'':p.stock}"></div></div><div class="field"><label>Categoría</label><input id="pCategory" maxlength="60" value="${esc(p.category)}"></div><div class="modal-actions">${p.id?`<button type="button" class="btn light" id="deleteProduct">Eliminar</button>`:''}<button type="button" class="btn light" onclick="closeModal()">Cancelar</button><button type="submit" class="btn red">Guardar</button></div></form>`);document.getElementById('productForm').onsubmit=e=>{e.preventDefault();let name=document.getElementById('pName').value.trim(),price=Number(document.getElementById('pPrice').value),raw=document.getElementById('pStock').value,stock=raw===''?null:Number(raw),category=document.getElementById('pCategory').value.trim()||'Otros';if(!name||!Number.isInteger(price)||price<0||stock!==null&&(!Number.isInteger(stock)||stock<0))return alert('Revisá los valores');if(p.id){Object.assign(p,{name,price,stock,category})}else{db.products.push({id:Math.max(0,...db.products.map(p=>p.id))+1,name,price,stock,category})}save();closeModal();render();toast('Producto guardado')};if(p.id)document.getElementById('deleteProduct').onclick=()=>{if(!confirm('¿Eliminar este producto del menú? El historial de ventas se conserva.'))return;db.products=db.products.filter(x=>x.id!==p.id);delete cart[p.id];save();closeModal();render()}}
+function cashToday(){let d=day(new Date()),sales=db.sales.filter(s=>day(s.date)===d),moves=db.cash.filter(c=>day(c.date)===d),cashSales=sales.filter(s=>s.payment==='Efectivo').reduce((a,s)=>a+s.total,0),digitalSales=sales.filter(s=>s.payment!=='Efectivo').reduce((a,s)=>a+s.total,0),ins=moves.filter(c=>c.type==='Ingreso').reduce((a,c)=>a+c.amount,0),outs=moves.filter(c=>c.type==='Egreso').reduce((a,c)=>a+c.amount,0);return{cashSales,digitalSales,ins,outs,balance:cashSales+ins-outs,moves}}
+function renderCash(){let c=cashToday();document.getElementById('cashSummary').innerHTML=`<div class="card"><div class="muted">Ventas en efectivo</div><div class="metric">${money(c.cashSales)}</div></div><div class="card"><div class="muted">Otros medios de pago</div><div class="metric">${money(c.digitalSales)}</div></div><div class="card"><div class="muted">Ingresos / egresos manuales</div><div class="metric" style="font-size:19px">${money(c.ins)} / ${money(c.outs)}</div></div><div class="card"><div class="muted">Saldo de caja calculado</div><div class="metric ${c.balance<0?'red':'green'}">${money(c.balance)}</div></div>`;document.getElementById('cashBody').innerHTML=c.moves.slice().reverse().map(x=>`<tr><td>${when(x.date)}</td><td>${esc(x.note)}</td><td>${x.type}</td><td>${money(x.amount)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin movimientos manuales hoy</td></tr>'}
+function openCashModal(){openModal(`<h2>Movimiento de caja</h2><form id="cashForm"><div class="field"><label>Tipo</label><select id="cType"><option>Ingreso</option><option>Egreso</option></select></div><div class="field"><label>Monto (Gs.)</label><input type="number" id="cAmount" min="1" step="1" required></div><div class="field"><label>Concepto</label><input id="cNote" required maxlength="120" placeholder="Compra de insumos, apertura de caja..."></div><div class="modal-actions"><button type="button" class="btn light" onclick="closeModal()">Cancelar</button><button type="submit" class="btn red">Guardar</button></div></form>`);document.getElementById('cashForm').onsubmit=e=>{e.preventDefault();let amount=Number(document.getElementById('cAmount').value),note=document.getElementById('cNote').value.trim();if(!Number.isInteger(amount)||amount<=0||!note)return;db.cash.push({date:new Date().toISOString(),type:document.getElementById('cType').value,amount,note});save();closeModal();renderCash();toast('Movimiento guardado')}}
+function saveSettings(){db.settings.name=document.getElementById('businessName').value.trim()||'GR Burger';db.settings.footer=document.getElementById('receiptFooter').value.trim();save();toast('Ajustes guardados')}
+function openModal(html){document.getElementById('modalContent').innerHTML=html;document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function receiptText(s){const width=30,center=t=>{t=String(t);return ' '.repeat(Math.max(0,Math.floor((width-t.length)/2)))+t},rule='-'.repeat(width),lines=[center(db.settings.name.toUpperCase()),center('COMPROBANTE INTERNO'),rule,'PEDIDO #'+s.id,'Fecha: '+when(s.date),'Tipo: '+s.type,'Pago: '+s.payment];if(s.customer)lines.push('Cliente: '+s.customer);lines.push(rule);s.items.forEach(i=>{lines.push(`${i.qty} x ${i.name}`);lines.push(money(i.total).padStart(width))});lines.push(rule,'TOTAL: '+money(s.total));if(s.notes)lines.push(rule,'Notas: '+s.notes);lines.push(rule,center(db.settings.footer),'No válido como factura legal');return lines.join('\n')}
+function showReceipt(id){let s=db.sales.find(s=>s.id===id);if(!s)return;openModal(`<h2>Ticket #${s.id}</h2><div class="receipt">${esc(receiptText(s))}</div><div class="notice small">Impresión directa por Bluetooth: requiere un servicio o app compatible en Android.</div><div class="stack"><button class="btn red" id="downloadPdf">Descargar ticket PDF</button><button class="btn light" id="printReceipt">Imprimir 58 mm</button><button class="btn light" id="shareReceipt">Compartir ticket</button><button class="btn light" id="copyReceipt">Copiar texto</button><button class="btn light" onclick="closeModal()">Cerrar</button></div>`);document.getElementById('downloadPdf').onclick=()=>downloadReceiptPDF(s);document.getElementById('printReceipt').onclick=()=>printReceipt(s);document.getElementById('shareReceipt').onclick=()=>shareReceipt(s);document.getElementById('copyReceipt').onclick=()=>{if(navigator.clipboard?.writeText){navigator.clipboard.writeText(receiptText(s)).then(()=>toast('Ticket copiado')).catch(()=>fallbackCopy(s))}else fallbackCopy(s)}}
+function fallbackCopy(s){let t=document.createElement('textarea');t.value=receiptText(s);document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Ticket copiado')}catch(e){alert('No se pudo copiar automáticamente')}t.remove()}
+
+function pdfSafeText(text){
+  // PDF Helvetica with WinAnsiEncoding: preserve common Spanish/Guarani Latin characters.
+  let out='';
+  for(const ch of String(text)){
+    const cp=ch.codePointAt(0);
+    out += (cp>=32 && cp<=255) ? cp.toString(16).padStart(2,'0') : '3f';
+  }
+  return out.toUpperCase();
+}
+function buildReceiptPDF(lines){
+  const pageW=164, margin=12, lineH=13, pageH=Math.max(190, 42+lines.length*lineH);
+  let stream='BT\n/F1 9 Tf\n'+margin+' '+(pageH-24)+' Td\n';
+  lines.forEach((line,i)=>{
+    if(i) stream+='0 -'+lineH+' Td\n';
+    stream+='<'+pdfSafeText(line)+'> Tj\n';
+  });
+  stream+='ET\n';
+  const objs=[
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>`,
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>',
+    `<< /Length ${stream.length} >>\nstream\n${stream}endstream`
+  ];
+  let pdf='%PDF-1.4\n%GRBURGER\n', offsets=[0];
+  objs.forEach((obj,i)=>{offsets.push(pdf.length);pdf+=(i+1)+' 0 obj\n'+obj+'\nendobj\n';});
+  const xref=pdf.length;
+  pdf+='xref\n0 '+(objs.length+1)+'\n0000000000 65535 f \n';
+  for(let i=1;i<offsets.length;i++) pdf+=String(offsets[i]).padStart(10,'0')+' 00000 n \n';
+  pdf+='trailer\n<< /Size '+(objs.length+1)+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+  return new Blob([pdf],{type:'application/pdf'});
+}
+function downloadReceiptPDF(s){
+  const blob=buildReceiptPDF(receiptText(s).split('\n'));
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='GR_Burger_Ticket_'+String(s.id).padStart(4,'0')+'.pdf';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  toast('Ticket PDF descargado');
+}
+
+function printReceipt(s){let w=window.open('','_blank','width=360,height=650');if(!w){toast('Habilitá ventanas emergentes para imprimir');return}let safe=esc(receiptText(s));w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Ticket #${s.id}</title><style>@page{size:58mm auto;margin:2mm}body{width:54mm;margin:0;padding:0;color:#000;background:#fff}pre{font:10px/1.25 monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}@media screen{body{padding:10px}}</style></head><body><pre>${safe}</pre><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);w.document.close()}
+async function shareReceipt(s){let t=receiptText(s);if(navigator.share){try{await navigator.share({title:'Ticket GR Burger #'+s.id,text:t})}catch(e){if(e.name!=='AbortError')toast('No se pudo compartir')}}else{fallbackCopy(s);toast('Compartir no disponible; ticket copiado')}}
+function demoTicket(){let sample={id:0,date:new Date().toISOString(),type:'Mostrador',payment:'Efectivo',customer:'Prueba',items:[{name:'V-1',qty:1,total:24000}],total:24000,notes:'Ticket de prueba'};openModal(`<h2>Ticket de prueba</h2><div class="receipt">${esc(receiptText(sample))}</div><div class="stack"><button class="btn red" id="demoPdf">Descargar PDF de prueba</button><button class="btn light" id="demoPrint">Imprimir 58 mm</button><button class="btn light" id="demoShare">Compartir</button><button class="btn light" onclick="closeModal()">Cerrar</button></div>`);document.getElementById('demoPdf').onclick=()=>downloadReceiptPDF(sample);document.getElementById('demoPrint').onclick=()=>printReceipt(sample);document.getElementById('demoShare').onclick=()=>shareReceipt(sample)}
+function exportData(){let blob=new Blob([JSON.stringify({format:'grburger_pos_v1',exported:new Date().toISOString(),data:db},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='GR_Burger_respaldo_'+day(new Date())+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+async function importData(e){let file=e.target.files?.[0];if(!file)return;try{let obj=JSON.parse(await file.text());if(obj.format!=='grburger_pos_v1'||!obj.data||!Array.isArray(obj.data.products)||!Array.isArray(obj.data.sales)||!Array.isArray(obj.data.cash))throw Error('Formato no válido');if(!confirm('¿Restaurar este respaldo? Reemplazará todos los datos actuales de este navegador.'))return;db=obj.data;db.settings=db.settings||{name:'GR Burger',footer:'¡Gracias por tu compra!'};db.nextSale=db.nextSale||1;cart={};save();render();toast('Respaldo restaurado')}catch(err){alert('No se pudo importar: '+err.message)}finally{e.target.value=''}}
+render();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+let app=null, auth=null, firestore=null, stopWatch=null, cloudDoc=null, pending=null, applyingRemote=false;
+const statusEl=()=>document.getElementById('cloudStatus');
+function status(msg){if(statusEl())statusEl().textContent='Estado: '+msg}
+function configFromUI(){
+  let raw=document.getElementById('firebaseConfig').value.trim();
+  if(!raw) throw new Error('Pegá primero la configuración Firebase.');
+  let cfg;
+  try { cfg=JSON.parse(raw); }
+  catch (_) {
+    // También acepta el fragmento JavaScript copiado desde Firebase Console.
+    let cleaned=raw.replace(/^\s*(?:const|let|var)\s+firebaseConfig\s*=\s*/, '').replace(/;\s*$/, '');
+    cleaned=cleaned.replace(/([{,]\s*)([A-Za-z_$][\w$]*)(\s*:)/g, '$1"$2"$3');
+    cfg=JSON.parse(cleaned);
+  }
+  if(!cfg.apiKey||!cfg.projectId||!cfg.appId) throw new Error('La configuración Firebase está incompleta.');
+  return cfg;
+}
+function ensureFirebase(){
+  if(!app){app=initializeApp(configFromUI());auth=getAuth(app);firestore=getFirestore(app)}
+}
+function getCloudDoc(){
+  // One private workspace document shared by the same Firebase account on both devices.
+  return doc(firestore,'grburger_pos','negocio');
+}
+async function connect(mode){
+  try{
+    ensureFirebase();
+    const email=document.getElementById('cloudEmail').value.trim();
+    const password=document.getElementById('cloudPassword').value;
+    if(!email||password.length<6) throw new Error('Ingresá el correo y una contraseña de al menos 6 caracteres.');
+    status('conectando…');
+    const cred = mode==='create'
+      ? await createUserWithEmailAndPassword(auth,email,password)
+      : await signInWithEmailAndPassword(auth,email,password);
+    await attachCloud(cred.user);
+  }catch(e){
+    status('no se pudo conectar: '+(e.code||e.message));
+    alert('No se pudo conectar: '+(e.message||e.code));
+  }
+}
+async function attachCloud(user){
+  if(stopWatch){stopWatch();stopWatch=null}
+  cloudDoc=getCloudDoc();
+  const snap=await getDoc(cloudDoc);
+  if(snap.exists()){
+    applyingRemote=true;
+    window.db=snap.data().data;
+    localStorage.setItem('grburger_pos_v1',JSON.stringify(window.db));
+    applyingRemote=false;
+    if(window.grRender)window.grRender();
+    status('conectado como '+user.email+' · datos descargados');
+  }else{
+    await setDoc(cloudDoc,{data:JSON.parse(localStorage.getItem('grburger_pos_v1')||'{}'),updatedAt:new Date().toISOString()});
+    status('conectado como '+user.email+' · datos iniciales subidos');
+  }
+  stopWatch=onSnapshot(cloudDoc,(docSnap)=>{
+    if(!docSnap.exists()||applyingRemote)return;
+    const remote=docSnap.data().data;
+    if(!remote)return;
+    const localRaw=localStorage.getItem('grburger_pos_v1');
+    if(JSON.stringify(remote)===localRaw)return;
+    applyingRemote=true;
+    window.db=remote;
+    localStorage.setItem('grburger_pos_v1',JSON.stringify(remote));
+    applyingRemote=false;
+    if(window.grRender)window.grRender();
+    status('sincronizado · '+new Date().toLocaleTimeString('es-PY'));
+  },err=>status('error de sincronización: '+err.message));
+}
+window.grCloudSave=(data)=>{
+  if(!auth?.currentUser||!cloudDoc||applyingRemote)return;
+  clearTimeout(pending);
+  pending=setTimeout(async()=>{
+    try{
+      await setDoc(cloudDoc,{data,updatedAt:new Date().toISOString()});
+      status('guardado en la nube · '+new Date().toLocaleTimeString('es-PY'));
+    }catch(e){status('error al guardar en nube: '+e.message)}
+  },500);
+};
+window.grRender=()=>{if(window.render)window.render()};
+document.getElementById('cloudCreate').addEventListener('click',()=>connect('create'));
+document.getElementById('cloudLogin').addEventListener('click',()=>connect('login'));
+document.getElementById('cloudLogout').addEventListener('click',async()=>{
+  try{if(auth)await signOut(auth);if(stopWatch)stopWatch();stopWatch=null;cloudDoc=null;status('desconectado; este dispositivo conserva sus datos locales')}
+  catch(e){alert(e.message)}
+});
+onAuthStateChanged((user)=>{if(user&&cloudDoc)status('cuenta activa: '+user.email)});
+</script>
+
+</body></html>
